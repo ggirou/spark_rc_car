@@ -12,7 +12,7 @@ int rightMotorDir   = D4;
 void setup()
 {
   //Register Spark function
-  Spark.function("rccar", rcCarControl);
+  Particle.function("rccar", rcCarControl);
 
   pinMode(leftMotorDir, OUTPUT);
   pinMode(leftMotorEnable, OUTPUT);
@@ -51,7 +51,7 @@ int rcCarControl(String command)
     return 1;
   }
 
-  if(command.substring(3,7) == "BACK")
+  if(command.substring(3,10) == "FORWARD")
   {
     digitalWrite(leftMotorDir,LOW);
     digitalWrite(rightMotorDir,HIGH);
@@ -62,7 +62,7 @@ int rcCarControl(String command)
     return 1;
   }
 
-  if(command.substring(3,10) == "FORWARD")
+  if(command.substring(3,7) == "BACK")
   {
     digitalWrite(leftMotorDir,HIGH);
     digitalWrite(rightMotorDir,LOW);
@@ -73,7 +73,7 @@ int rcCarControl(String command)
     return 1;
   }
 
-  if(command.substring(3,8) == "RIGHT")
+  if(command.substring(3,7) == "LEFT")
   {
     digitalWrite(leftMotorDir,HIGH);
     digitalWrite(rightMotorDir,HIGH);
@@ -84,7 +84,7 @@ int rcCarControl(String command)
     return 1;
   }
 
-  if(command.substring(3,7) == "LEFT")
+  if(command.substring(3,8) == "RIGHT")
   {
     digitalWrite(leftMotorDir,LOW);
     digitalWrite(rightMotorDir,LOW);
